@@ -1,9 +1,11 @@
-part of compute_v1beta15_api_client;
+part of compute_v1beta15_api;
 
-class AddressesResource_ extends Resource {
+class AddressesResource_ {
 
-  AddressesResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  AddressesResource_(Client client) :
+      _client = client;
 
   /**
    * Retrieves the list of addresses grouped by scope.
@@ -221,10 +223,12 @@ class AddressesResource_ extends Resource {
   }
 }
 
-class DisksResource_ extends Resource {
+class DisksResource_ {
 
-  DisksResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  DisksResource_(Client client) :
+      _client = client;
 
   /**
    * Retrieves the list of disks grouped by scope.
@@ -487,10 +491,12 @@ class DisksResource_ extends Resource {
   }
 }
 
-class FirewallsResource_ extends Resource {
+class FirewallsResource_ {
 
-  FirewallsResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  FirewallsResource_(Client client) :
+      _client = client;
 
   /**
    * Deletes the specified firewall resource.
@@ -725,10 +731,12 @@ class FirewallsResource_ extends Resource {
   }
 }
 
-class GlobalOperationsResource_ extends Resource {
+class GlobalOperationsResource_ {
 
-  GlobalOperationsResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  GlobalOperationsResource_(Client client) :
+      _client = client;
 
   /**
    * Retrieves the list of all operations grouped by scope.
@@ -894,10 +902,59 @@ class GlobalOperationsResource_ extends Resource {
   }
 }
 
-class ImagesResource_ extends Resource {
+class HttpHealthChecksResource_ {
 
-  ImagesResource_(Client client) : super(client) {
+  final Client _client;
+
+  HttpHealthChecksResource_(Client client) :
+      _client = client;
+
+  /**
+   * Updates a HttpHealthCheck resource in the specified project using the data included in the request. This method supports patch semantics.
+   *
+   * [request] - HttpHealthCheck to send in this request
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [httpHealthCheck] - Name of the HttpHealthCheck resource to update.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Operation> patch(HttpHealthCheck request, core.String project, core.String httpHealthCheck, {core.Map optParams}) {
+    var url = "{project}/global/httpHealthChecks/{httpHealthCheck}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (httpHealthCheck == null) paramErrors.add("httpHealthCheck is required");
+    if (httpHealthCheck != null) urlParams["httpHealthCheck"] = httpHealthCheck;
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "PATCH", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Operation.fromJson(data));
   }
+}
+
+class ImagesResource_ {
+
+  final Client _client;
+
+  ImagesResource_(Client client) :
+      _client = client;
 
   /**
    * Deletes the specified image resource.
@@ -1093,10 +1150,12 @@ class ImagesResource_ extends Resource {
   }
 }
 
-class InstancesResource_ extends Resource {
+class InstancesResource_ {
 
-  InstancesResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  InstancesResource_(Client client) :
+      _client = client;
 
   /**
    * Adds an access config to an instance's network interface.
@@ -1665,10 +1724,12 @@ class InstancesResource_ extends Resource {
   }
 }
 
-class KernelsResource_ extends Resource {
+class KernelsResource_ {
 
-  KernelsResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  KernelsResource_(Client client) :
+      _client = client;
 
   /**
    * Returns the specified kernel resource.
@@ -1753,10 +1814,12 @@ class KernelsResource_ extends Resource {
   }
 }
 
-class MachineTypesResource_ extends Resource {
+class MachineTypesResource_ {
 
-  MachineTypesResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  MachineTypesResource_(Client client) :
+      _client = client;
 
   /**
    * Retrieves the list of machine type resources grouped by scope.
@@ -1894,10 +1957,12 @@ class MachineTypesResource_ extends Resource {
   }
 }
 
-class NetworksResource_ extends Resource {
+class NetworksResource_ {
 
-  NetworksResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  NetworksResource_(Client client) :
+      _client = client;
 
   /**
    * Deletes the specified network resource.
@@ -2054,10 +2119,12 @@ class NetworksResource_ extends Resource {
   }
 }
 
-class ProjectsResource_ extends Resource {
+class ProjectsResource_ {
 
-  ProjectsResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  ProjectsResource_(Client client) :
+      _client = client;
 
   /**
    * Returns the specified project resource.
@@ -2128,10 +2195,12 @@ class ProjectsResource_ extends Resource {
   }
 }
 
-class RegionOperationsResource_ extends Resource {
+class RegionOperationsResource_ {
 
-  RegionOperationsResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  RegionOperationsResource_(Client client) :
+      _client = client;
 
   /**
    * Deletes the specified region-specific operation resource.
@@ -2264,10 +2333,12 @@ class RegionOperationsResource_ extends Resource {
   }
 }
 
-class RegionsResource_ extends Resource {
+class RegionsResource_ {
 
-  RegionsResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  RegionsResource_(Client client) :
+      _client = client;
 
   /**
    * Returns the specified region resource.
@@ -2352,10 +2423,12 @@ class RegionsResource_ extends Resource {
   }
 }
 
-class RoutesResource_ extends Resource {
+class RoutesResource_ {
 
-  RoutesResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  RoutesResource_(Client client) :
+      _client = client;
 
   /**
    * Deletes the specified route resource.
@@ -2512,10 +2585,12 @@ class RoutesResource_ extends Resource {
   }
 }
 
-class SnapshotsResource_ extends Resource {
+class SnapshotsResource_ {
 
-  SnapshotsResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  SnapshotsResource_(Client client) :
+      _client = client;
 
   /**
    * Deletes the specified persistent disk snapshot resource.
@@ -2637,10 +2712,12 @@ class SnapshotsResource_ extends Resource {
   }
 }
 
-class ZoneOperationsResource_ extends Resource {
+class ZoneOperationsResource_ {
 
-  ZoneOperationsResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  ZoneOperationsResource_(Client client) :
+      _client = client;
 
   /**
    * Deletes the specified zone-specific operation resource.
@@ -2773,10 +2850,12 @@ class ZoneOperationsResource_ extends Resource {
   }
 }
 
-class ZonesResource_ extends Resource {
+class ZonesResource_ {
 
-  ZonesResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  ZonesResource_(Client client) :
+      _client = client;
 
   /**
    * Returns the specified zone resource.
