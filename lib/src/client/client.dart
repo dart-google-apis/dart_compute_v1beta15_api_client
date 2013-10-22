@@ -11,6 +11,7 @@ abstract class Client extends ClientBase {
   AddressesResource_ get addresses => new AddressesResource_(this);
   DisksResource_ get disks => new DisksResource_(this);
   FirewallsResource_ get firewalls => new FirewallsResource_(this);
+  ForwardingRulesResource_ get forwardingRules => new ForwardingRulesResource_(this);
   GlobalOperationsResource_ get globalOperations => new GlobalOperationsResource_(this);
   HttpHealthChecksResource_ get httpHealthChecks => new HttpHealthChecksResource_(this);
   ImagesResource_ get images => new ImagesResource_(this);
@@ -23,6 +24,7 @@ abstract class Client extends ClientBase {
   RegionsResource_ get regions => new RegionsResource_(this);
   RoutesResource_ get routes => new RoutesResource_(this);
   SnapshotsResource_ get snapshots => new SnapshotsResource_(this);
+  TargetPoolsResource_ get targetPools => new TargetPoolsResource_(this);
   ZoneOperationsResource_ get zoneOperations => new ZoneOperationsResource_(this);
   ZonesResource_ get zones => new ZonesResource_(this);
 

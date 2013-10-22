@@ -14,7 +14,7 @@ Adding dependency to pubspec.yaml
 
 ```
   dependencies:
-    google_compute_v1beta15_api: '>=0.3.2'
+    google_compute_v1beta15_api: '>=0.4.3'
 ```
 
 For web applications:

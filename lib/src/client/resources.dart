@@ -17,7 +17,7 @@ class AddressesResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -185,7 +185,7 @@ class AddressesResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -240,7 +240,7 @@ class DisksResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -453,7 +453,7 @@ class DisksResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -617,7 +617,7 @@ class FirewallsResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -731,6 +731,272 @@ class FirewallsResource_ {
   }
 }
 
+class ForwardingRulesResource_ {
+
+  final Client _client;
+
+  ForwardingRulesResource_(Client client) :
+      _client = client;
+
+  /**
+   * Retrieves the list of forwarding rules grouped by scope.
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [filter] - Optional. Filter expression for filtering listed resources.
+   *
+   * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
+   *   Default: 100
+   *   Minimum: 0
+   *   Maximum: 500
+   *
+   * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<ForwardingRuleAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken, core.Map optParams}) {
+    var url = "{project}/aggregated/forwardingRules";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (filter != null) queryParams["filter"] = filter;
+    if (maxResults != null) queryParams["maxResults"] = maxResults;
+    if (pageToken != null) queryParams["pageToken"] = pageToken;
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new ForwardingRuleAggregatedList.fromJson(data));
+  }
+
+  /**
+   * Deletes the specified ForwardingRule resource.
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [forwardingRule] - Name of the ForwardingRule resource to delete.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Operation> delete(core.String project, core.String region, core.String forwardingRule, {core.Map optParams}) {
+    var url = "{project}/regions/{region}/forwardingRules/{forwardingRule}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (forwardingRule == null) paramErrors.add("forwardingRule is required");
+    if (forwardingRule != null) urlParams["forwardingRule"] = forwardingRule;
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (region == null) paramErrors.add("region is required");
+    if (region != null) urlParams["region"] = region;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "DELETE", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified ForwardingRule resource.
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [forwardingRule] - Name of the ForwardingRule resource to return.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<ForwardingRule> get(core.String project, core.String region, core.String forwardingRule, {core.Map optParams}) {
+    var url = "{project}/regions/{region}/forwardingRules/{forwardingRule}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (forwardingRule == null) paramErrors.add("forwardingRule is required");
+    if (forwardingRule != null) urlParams["forwardingRule"] = forwardingRule;
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (region == null) paramErrors.add("region is required");
+    if (region != null) urlParams["region"] = region;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new ForwardingRule.fromJson(data));
+  }
+
+  /**
+   * Creates a ForwardingRule resource in the specified project and region using the data included in the request.
+   *
+   * [request] - ForwardingRule to send in this request
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Operation> insert(ForwardingRule request, core.String project, core.String region, {core.Map optParams}) {
+    var url = "{project}/regions/{region}/forwardingRules";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (region == null) paramErrors.add("region is required");
+    if (region != null) urlParams["region"] = region;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of ForwardingRule resources available to the specified project and region.
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [filter] - Optional. Filter expression for filtering listed resources.
+   *
+   * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
+   *   Default: 100
+   *   Minimum: 0
+   *   Maximum: 500
+   *
+   * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<ForwardingRuleList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken, core.Map optParams}) {
+    var url = "{project}/regions/{region}/forwardingRules";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (filter != null) queryParams["filter"] = filter;
+    if (maxResults != null) queryParams["maxResults"] = maxResults;
+    if (pageToken != null) queryParams["pageToken"] = pageToken;
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (region == null) paramErrors.add("region is required");
+    if (region != null) urlParams["region"] = region;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new ForwardingRuleList.fromJson(data));
+  }
+
+  /**
+   * Changes target url for forwarding rule.
+   *
+   * [request] - TargetReference to send in this request
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [forwardingRule] - Name of the ForwardingRule resource in which target is to be set.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Operation> setTarget(TargetReference request, core.String project, core.String region, core.String forwardingRule, {core.Map optParams}) {
+    var url = "{project}/regions/{region}/forwardingRules/{forwardingRule}/setTarget";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (forwardingRule == null) paramErrors.add("forwardingRule is required");
+    if (forwardingRule != null) urlParams["forwardingRule"] = forwardingRule;
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (region == null) paramErrors.add("region is required");
+    if (region != null) urlParams["region"] = region;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Operation.fromJson(data));
+  }
+}
+
 class GlobalOperationsResource_ {
 
   final Client _client;
@@ -748,7 +1014,7 @@ class GlobalOperationsResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -866,7 +1132,7 @@ class GlobalOperationsResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -910,6 +1176,160 @@ class HttpHealthChecksResource_ {
       _client = client;
 
   /**
+   * Deletes the specified HttpHealthCheck resource.
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [httpHealthCheck] - Name of the HttpHealthCheck resource to delete.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Operation> delete(core.String project, core.String httpHealthCheck, {core.Map optParams}) {
+    var url = "{project}/global/httpHealthChecks/{httpHealthCheck}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (httpHealthCheck == null) paramErrors.add("httpHealthCheck is required");
+    if (httpHealthCheck != null) urlParams["httpHealthCheck"] = httpHealthCheck;
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "DELETE", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified HttpHealthCheck resource.
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [httpHealthCheck] - Name of the HttpHealthCheck resource to return.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<HttpHealthCheck> get(core.String project, core.String httpHealthCheck, {core.Map optParams}) {
+    var url = "{project}/global/httpHealthChecks/{httpHealthCheck}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (httpHealthCheck == null) paramErrors.add("httpHealthCheck is required");
+    if (httpHealthCheck != null) urlParams["httpHealthCheck"] = httpHealthCheck;
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new HttpHealthCheck.fromJson(data));
+  }
+
+  /**
+   * Creates a HttpHealthCheck resource in the specified project using the data included in the request.
+   *
+   * [request] - HttpHealthCheck to send in this request
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Operation> insert(HttpHealthCheck request, core.String project, {core.Map optParams}) {
+    var url = "{project}/global/httpHealthChecks";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of HttpHealthCheck resources available to the specified project.
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [filter] - Optional. Filter expression for filtering listed resources.
+   *
+   * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
+   *   Default: 100
+   *   Minimum: 0
+   *   Maximum: 500
+   *
+   * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<HttpHealthCheckList> list(core.String project, {core.String filter, core.int maxResults, core.String pageToken, core.Map optParams}) {
+    var url = "{project}/global/httpHealthChecks";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (filter != null) queryParams["filter"] = filter;
+    if (maxResults != null) queryParams["maxResults"] = maxResults;
+    if (pageToken != null) queryParams["pageToken"] = pageToken;
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new HttpHealthCheckList.fromJson(data));
+  }
+
+  /**
    * Updates a HttpHealthCheck resource in the specified project using the data included in the request. This method supports patch semantics.
    *
    * [request] - HttpHealthCheck to send in this request
@@ -944,6 +1364,45 @@ class HttpHealthChecksResource_ {
 
     var response;
     response = _client.request(url, "PATCH", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Updates a HttpHealthCheck resource in the specified project using the data included in the request.
+   *
+   * [request] - HttpHealthCheck to send in this request
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [httpHealthCheck] - Name of the HttpHealthCheck resource to update.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Operation> update(HttpHealthCheck request, core.String project, core.String httpHealthCheck, {core.Map optParams}) {
+    var url = "{project}/global/httpHealthChecks/{httpHealthCheck}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (httpHealthCheck == null) paramErrors.add("httpHealthCheck is required");
+    if (httpHealthCheck != null) urlParams["httpHealthCheck"] = httpHealthCheck;
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "PUT", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
     return response
       .then((data) => new Operation.fromJson(data));
   }
@@ -1114,7 +1573,7 @@ class ImagesResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -1213,7 +1672,7 @@ class InstancesResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -1559,7 +2018,7 @@ class InstancesResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -1778,7 +2237,7 @@ class KernelsResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -1831,7 +2290,7 @@ class MachineTypesResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -1919,7 +2378,7 @@ class MachineTypesResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -2083,7 +2542,7 @@ class NetworksResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -2295,7 +2754,7 @@ class RegionOperationsResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -2387,7 +2846,7 @@ class RegionsResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -2549,7 +3008,7 @@ class RoutesResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -2676,7 +3135,7 @@ class SnapshotsResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -2709,6 +3168,490 @@ class SnapshotsResource_ {
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
     return response
       .then((data) => new SnapshotList.fromJson(data));
+  }
+}
+
+class TargetPoolsResource_ {
+
+  final Client _client;
+
+  TargetPoolsResource_(Client client) :
+      _client = client;
+
+  /**
+   * Adds health check URL to targetPool.
+   *
+   * [request] - HealthCheckReference to send in this request
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [targetPool] - Name of the TargetPool resource to which health_check_url is to be added.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Operation> addHealthCheck(HealthCheckReference request, core.String project, core.String region, core.String targetPool, {core.Map optParams}) {
+    var url = "{project}/regions/{region}/targetPools/{targetPool}/addHealthCheck";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (region == null) paramErrors.add("region is required");
+    if (region != null) urlParams["region"] = region;
+    if (targetPool == null) paramErrors.add("targetPool is required");
+    if (targetPool != null) urlParams["targetPool"] = targetPool;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Adds instance url to targetPool.
+   *
+   * [request] - InstanceReference to send in this request
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [targetPool] - Name of the TargetPool resource to which instance_url is to be added.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Operation> addInstance(InstanceReference request, core.String project, core.String region, core.String targetPool, {core.Map optParams}) {
+    var url = "{project}/regions/{region}/targetPools/{targetPool}/addInstance";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (region == null) paramErrors.add("region is required");
+    if (region != null) urlParams["region"] = region;
+    if (targetPool == null) paramErrors.add("targetPool is required");
+    if (targetPool != null) urlParams["targetPool"] = targetPool;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of target pools grouped by scope.
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [filter] - Optional. Filter expression for filtering listed resources.
+   *
+   * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
+   *   Default: 100
+   *   Minimum: 0
+   *   Maximum: 500
+   *
+   * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<TargetPoolAggregatedList> aggregatedList(core.String project, {core.String filter, core.int maxResults, core.String pageToken, core.Map optParams}) {
+    var url = "{project}/aggregated/targetPools";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (filter != null) queryParams["filter"] = filter;
+    if (maxResults != null) queryParams["maxResults"] = maxResults;
+    if (pageToken != null) queryParams["pageToken"] = pageToken;
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new TargetPoolAggregatedList.fromJson(data));
+  }
+
+  /**
+   * Deletes the specified TargetPool resource.
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [targetPool] - Name of the TargetPool resource to delete.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Operation> delete(core.String project, core.String region, core.String targetPool, {core.Map optParams}) {
+    var url = "{project}/regions/{region}/targetPools/{targetPool}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (region == null) paramErrors.add("region is required");
+    if (region != null) urlParams["region"] = region;
+    if (targetPool == null) paramErrors.add("targetPool is required");
+    if (targetPool != null) urlParams["targetPool"] = targetPool;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "DELETE", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Returns the specified TargetPool resource.
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [targetPool] - Name of the TargetPool resource to return.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<TargetPool> get(core.String project, core.String region, core.String targetPool, {core.Map optParams}) {
+    var url = "{project}/regions/{region}/targetPools/{targetPool}";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (region == null) paramErrors.add("region is required");
+    if (region != null) urlParams["region"] = region;
+    if (targetPool == null) paramErrors.add("targetPool is required");
+    if (targetPool != null) urlParams["targetPool"] = targetPool;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new TargetPool.fromJson(data));
+  }
+
+  /**
+   * Gets the most recent health check results for each IP for the given instance that is referenced by given TargetPool.
+   *
+   * [request] - InstanceReference to send in this request
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [targetPool] - Name of the TargetPool resource to which the queried instance belongs.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<TargetPoolInstanceHealth> getHealth(InstanceReference request, core.String project, core.String region, core.String targetPool, {core.Map optParams}) {
+    var url = "{project}/regions/{region}/targetPools/{targetPool}/getHealth";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (region == null) paramErrors.add("region is required");
+    if (region != null) urlParams["region"] = region;
+    if (targetPool == null) paramErrors.add("targetPool is required");
+    if (targetPool != null) urlParams["targetPool"] = targetPool;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new TargetPoolInstanceHealth.fromJson(data));
+  }
+
+  /**
+   * Creates a TargetPool resource in the specified project and region using the data included in the request.
+   *
+   * [request] - TargetPool to send in this request
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Operation> insert(TargetPool request, core.String project, core.String region, {core.Map optParams}) {
+    var url = "{project}/regions/{region}/targetPools";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (region == null) paramErrors.add("region is required");
+    if (region != null) urlParams["region"] = region;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Retrieves the list of TargetPool resources available to the specified project and region.
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [filter] - Optional. Filter expression for filtering listed resources.
+   *
+   * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
+   *   Default: 100
+   *   Minimum: 0
+   *   Maximum: 500
+   *
+   * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<TargetPoolList> list(core.String project, core.String region, {core.String filter, core.int maxResults, core.String pageToken, core.Map optParams}) {
+    var url = "{project}/regions/{region}/targetPools";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (filter != null) queryParams["filter"] = filter;
+    if (maxResults != null) queryParams["maxResults"] = maxResults;
+    if (pageToken != null) queryParams["pageToken"] = pageToken;
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (region == null) paramErrors.add("region is required");
+    if (region != null) urlParams["region"] = region;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new TargetPoolList.fromJson(data));
+  }
+
+  /**
+   * Removes health check URL from targetPool.
+   *
+   * [request] - HealthCheckReference to send in this request
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [targetPool] - Name of the TargetPool resource to which health_check_url is to be removed.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Operation> removeHealthCheck(HealthCheckReference request, core.String project, core.String region, core.String targetPool, {core.Map optParams}) {
+    var url = "{project}/regions/{region}/targetPools/{targetPool}/removeHealthCheck";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (region == null) paramErrors.add("region is required");
+    if (region != null) urlParams["region"] = region;
+    if (targetPool == null) paramErrors.add("targetPool is required");
+    if (targetPool != null) urlParams["targetPool"] = targetPool;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Removes instance URL from targetPool.
+   *
+   * [request] - InstanceReference to send in this request
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [targetPool] - Name of the TargetPool resource to which instance_url is to be removed.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Operation> removeInstance(InstanceReference request, core.String project, core.String region, core.String targetPool, {core.Map optParams}) {
+    var url = "{project}/regions/{region}/targetPools/{targetPool}/removeInstance";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (region == null) paramErrors.add("region is required");
+    if (region != null) urlParams["region"] = region;
+    if (targetPool == null) paramErrors.add("targetPool is required");
+    if (targetPool != null) urlParams["targetPool"] = targetPool;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Operation.fromJson(data));
+  }
+
+  /**
+   * Changes backup pool configurations.
+   *
+   * [request] - TargetReference to send in this request
+   *
+   * [project] - Name of the project scoping this request.
+   *
+   * [region] - Name of the region scoping this request.
+   *
+   * [targetPool] - Name of the TargetPool resource for which the backup is to be set.
+   *
+   * [failoverRatio] - New failoverRatio value for the containing target pool.
+   *
+   * [optParams] - Additional query parameters
+   */
+  async.Future<Operation> setBackup(TargetReference request, core.String project, core.String region, core.String targetPool, {core.num failoverRatio, core.Map optParams}) {
+    var url = "{project}/regions/{region}/targetPools/{targetPool}/setBackup";
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
+
+    var paramErrors = new core.List();
+    if (failoverRatio != null) queryParams["failoverRatio"] = failoverRatio;
+    if (project == null) paramErrors.add("project is required");
+    if (project != null) urlParams["project"] = project;
+    if (region == null) paramErrors.add("region is required");
+    if (region != null) urlParams["region"] = region;
+    if (targetPool == null) paramErrors.add("targetPool is required");
+    if (targetPool != null) urlParams["targetPool"] = targetPool;
+    if (optParams != null) {
+      optParams.forEach((key, value) {
+        if (value != null && queryParams[key] == null) {
+          queryParams[key] = value;
+        }
+      });
+    }
+
+    if (!paramErrors.isEmpty) {
+      throw new core.ArgumentError(paramErrors.join(" / "));
+    }
+
+    var response;
+    response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
+    return response
+      .then((data) => new Operation.fromJson(data));
   }
 }
 
@@ -2812,7 +3755,7 @@ class ZoneOperationsResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *
@@ -2904,7 +3847,7 @@ class ZonesResource_ {
    * [maxResults] - Optional. Maximum count of results to be returned. Maximum and default value is 100.
    *   Default: 100
    *   Minimum: 0
-   *   Maximum: 100
+   *   Maximum: 500
    *
    * [pageToken] - Optional. Tag returned by a previous list request truncated by maxResults. Used to continue a previous list request.
    *

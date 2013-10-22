@@ -52,7 +52,7 @@ class AccessConfig {
   }
 
   /** Return String representation of AccessConfig */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -86,7 +86,6 @@ class Address {
   /** The status of the address (output only). */
   core.String status;
 
-  /** URL of the resource currently using this address (output only). */
   core.String user;
 
   /** Create new Address from JSON data */
@@ -162,7 +161,7 @@ class Address {
   }
 
   /** Return String representation of Address */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -226,7 +225,7 @@ class AddressAggregatedList {
   }
 
   /** Return String representation of AddressAggregatedList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -291,7 +290,7 @@ class AddressList {
   }
 
   /** Return String representation of AddressList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -328,7 +327,7 @@ class AddressesScopedList {
   }
 
   /** Return String representation of AddressesScopedList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -375,7 +374,7 @@ class AddressesScopedListWarning {
   }
 
   /** Return String representation of AddressesScopedListWarning */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -412,7 +411,7 @@ class AddressesScopedListWarningData {
   }
 
   /** Return String representation of AddressesScopedListWarningData */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -495,7 +494,7 @@ class AttachedDisk {
   }
 
   /** Return String representation of AttachedDisk */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -560,7 +559,7 @@ class DeprecationStatus {
   }
 
   /** Return String representation of DeprecationStatus */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -688,7 +687,7 @@ class Disk {
   }
 
   /** Return String representation of Disk */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -752,7 +751,7 @@ class DiskAggregatedList {
   }
 
   /** Return String representation of DiskAggregatedList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -817,7 +816,7 @@ class DiskList {
   }
 
   /** Return String representation of DiskList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -854,7 +853,7 @@ class DisksScopedList {
   }
 
   /** Return String representation of DisksScopedList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -901,7 +900,7 @@ class DisksScopedListWarning {
   }
 
   /** Return String representation of DisksScopedListWarning */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -938,7 +937,7 @@ class DisksScopedListWarningData {
   }
 
   /** Return String representation of DisksScopedListWarningData */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1057,7 +1056,7 @@ class Firewall {
   }
 
   /** Return String representation of Firewall */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1096,7 +1095,7 @@ Example inputs include: ["22"], ["80","443"] and ["12345-12349"]. */
   }
 
   /** Return String representation of FirewallAllowed */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1161,7 +1160,449 @@ class FirewallList {
   }
 
   /** Return String representation of FirewallList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** A ForwardingRule resource. A ForwardingRule resource specifies which pool of target VMs to forward a packet to if it matches the given [IPAddress, IPProtocol, portRange] tuple. */
+class ForwardingRule {
+
+  /** Value of the reserved IP address that this forwarding rule is serving on behalf of. The address resource must live in the same region as the forwarding rule. If left empty (default value), an ephemeral IP will be assigned. */
+  core.String IPAddress;
+
+  /** The IP protocol to which this rule applies, can be either 'TCP' or 'UDP' (If left empty, will use TCP by default). */
+  core.String IPProtocol;
+
+  /** Creation timestamp in RFC3339 text format (output only). */
+  core.String creationTimestamp;
+
+  /** An optional textual description of the resource; provided by the client when the resource is created. */
+  core.String description;
+
+  /** Unique identifier for the resource; defined by the server (output only). */
+  core.String id;
+
+  /** Type of the resource. */
+  core.String kind;
+
+  /** Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. */
+  core.String name;
+
+  /** If 'IPProtocol' is 'TCP' or 'UDP', only packets addressed to ports in the specified range will be forwarded to 'target'. If left empty (default value), all ports are forwarded. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint port ranges. */
+  core.String portRange;
+
+  /** URL of the region where the forwarding rule resides (output only). */
+  core.String region;
+
+  /** Server defined URL for the resource (output only). */
+  core.String selfLink;
+
+  /** The URL of the target resource to receive the matched traffic. It must live in the same region as this forwarding rule. */
+  core.String target;
+
+  /** Create new ForwardingRule from JSON data */
+  ForwardingRule.fromJson(core.Map json) {
+    if (json.containsKey("IPAddress")) {
+      IPAddress = json["IPAddress"];
+    }
+    if (json.containsKey("IPProtocol")) {
+      IPProtocol = json["IPProtocol"];
+    }
+    if (json.containsKey("creationTimestamp")) {
+      creationTimestamp = json["creationTimestamp"];
+    }
+    if (json.containsKey("description")) {
+      description = json["description"];
+    }
+    if (json.containsKey("id")) {
+      id = json["id"];
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("name")) {
+      name = json["name"];
+    }
+    if (json.containsKey("portRange")) {
+      portRange = json["portRange"];
+    }
+    if (json.containsKey("region")) {
+      region = json["region"];
+    }
+    if (json.containsKey("selfLink")) {
+      selfLink = json["selfLink"];
+    }
+    if (json.containsKey("target")) {
+      target = json["target"];
+    }
+  }
+
+  /** Create JSON Object for ForwardingRule */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (IPAddress != null) {
+      output["IPAddress"] = IPAddress;
+    }
+    if (IPProtocol != null) {
+      output["IPProtocol"] = IPProtocol;
+    }
+    if (creationTimestamp != null) {
+      output["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      output["description"] = description;
+    }
+    if (id != null) {
+      output["id"] = id;
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (name != null) {
+      output["name"] = name;
+    }
+    if (portRange != null) {
+      output["portRange"] = portRange;
+    }
+    if (region != null) {
+      output["region"] = region;
+    }
+    if (selfLink != null) {
+      output["selfLink"] = selfLink;
+    }
+    if (target != null) {
+      output["target"] = target;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of ForwardingRule */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class ForwardingRuleAggregatedList {
+
+  /** Unique identifier for the resource; defined by the server (output only). */
+  core.String id;
+
+  /** A map of scoped forwarding rule lists. */
+  core.Map<core.String, ForwardingRulesScopedList> items;
+
+  /** Type of resource. */
+  core.String kind;
+
+  /** A token used to continue a truncated list request (output only). */
+  core.String nextPageToken;
+
+  /** Server defined URL for this resource (output only). */
+  core.String selfLink;
+
+  /** Create new ForwardingRuleAggregatedList from JSON data */
+  ForwardingRuleAggregatedList.fromJson(core.Map json) {
+    if (json.containsKey("id")) {
+      id = json["id"];
+    }
+    if (json.containsKey("items")) {
+      items = _mapMap(json["items"], (itemsItem) => new ForwardingRulesScopedList.fromJson(itemsItem));
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("nextPageToken")) {
+      nextPageToken = json["nextPageToken"];
+    }
+    if (json.containsKey("selfLink")) {
+      selfLink = json["selfLink"];
+    }
+  }
+
+  /** Create JSON Object for ForwardingRuleAggregatedList */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (id != null) {
+      output["id"] = id;
+    }
+    if (items != null) {
+      output["items"] = _mapMap(items, (itemsItem) => itemsItem.toJson());
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      output["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      output["selfLink"] = selfLink;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of ForwardingRuleAggregatedList */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** Contains a list of ForwardingRule resources. */
+class ForwardingRuleList {
+
+  /** Unique identifier for the resource; defined by the server (output only). */
+  core.String id;
+
+  /** The ForwardingRule resources. */
+  core.List<ForwardingRule> items;
+
+  /** Type of resource. */
+  core.String kind;
+
+  /** A token used to continue a truncated list request (output only). */
+  core.String nextPageToken;
+
+  /** Server defined URL for this resource (output only). */
+  core.String selfLink;
+
+  /** Create new ForwardingRuleList from JSON data */
+  ForwardingRuleList.fromJson(core.Map json) {
+    if (json.containsKey("id")) {
+      id = json["id"];
+    }
+    if (json.containsKey("items")) {
+      items = json["items"].map((itemsItem) => new ForwardingRule.fromJson(itemsItem)).toList();
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("nextPageToken")) {
+      nextPageToken = json["nextPageToken"];
+    }
+    if (json.containsKey("selfLink")) {
+      selfLink = json["selfLink"];
+    }
+  }
+
+  /** Create JSON Object for ForwardingRuleList */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (id != null) {
+      output["id"] = id;
+    }
+    if (items != null) {
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      output["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      output["selfLink"] = selfLink;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of ForwardingRuleList */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class ForwardingRulesScopedList {
+
+  /** List of forwarding rules contained in this scope. */
+  core.List<ForwardingRule> forwardingRules;
+
+  /** Informational warning which replaces the list of forwarding rules when the list is empty. */
+  ForwardingRulesScopedListWarning warning;
+
+  /** Create new ForwardingRulesScopedList from JSON data */
+  ForwardingRulesScopedList.fromJson(core.Map json) {
+    if (json.containsKey("forwardingRules")) {
+      forwardingRules = json["forwardingRules"].map((forwardingRulesItem) => new ForwardingRule.fromJson(forwardingRulesItem)).toList();
+    }
+    if (json.containsKey("warning")) {
+      warning = new ForwardingRulesScopedListWarning.fromJson(json["warning"]);
+    }
+  }
+
+  /** Create JSON Object for ForwardingRulesScopedList */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (forwardingRules != null) {
+      output["forwardingRules"] = forwardingRules.map((forwardingRulesItem) => forwardingRulesItem.toJson()).toList();
+    }
+    if (warning != null) {
+      output["warning"] = warning.toJson();
+    }
+
+    return output;
+  }
+
+  /** Return String representation of ForwardingRulesScopedList */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** Informational warning which replaces the list of forwarding rules when the list is empty. */
+class ForwardingRulesScopedListWarning {
+
+  /** The warning type identifier for this warning. */
+  core.String code;
+
+  /** Metadata for this warning in 'key: value' format. */
+  core.List<ForwardingRulesScopedListWarningData> data;
+
+  /** Optional human-readable details for this warning. */
+  core.String message;
+
+  /** Create new ForwardingRulesScopedListWarning from JSON data */
+  ForwardingRulesScopedListWarning.fromJson(core.Map json) {
+    if (json.containsKey("code")) {
+      code = json["code"];
+    }
+    if (json.containsKey("data")) {
+      data = json["data"].map((dataItem) => new ForwardingRulesScopedListWarningData.fromJson(dataItem)).toList();
+    }
+    if (json.containsKey("message")) {
+      message = json["message"];
+    }
+  }
+
+  /** Create JSON Object for ForwardingRulesScopedListWarning */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (code != null) {
+      output["code"] = code;
+    }
+    if (data != null) {
+      output["data"] = data.map((dataItem) => dataItem.toJson()).toList();
+    }
+    if (message != null) {
+      output["message"] = message;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of ForwardingRulesScopedListWarning */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class ForwardingRulesScopedListWarningData {
+
+  /** A key for the warning data. */
+  core.String key;
+
+  /** A warning data value corresponding to the key. */
+  core.String value;
+
+  /** Create new ForwardingRulesScopedListWarningData from JSON data */
+  ForwardingRulesScopedListWarningData.fromJson(core.Map json) {
+    if (json.containsKey("key")) {
+      key = json["key"];
+    }
+    if (json.containsKey("value")) {
+      value = json["value"];
+    }
+  }
+
+  /** Create JSON Object for ForwardingRulesScopedListWarningData */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (key != null) {
+      output["key"] = key;
+    }
+    if (value != null) {
+      output["value"] = value;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of ForwardingRulesScopedListWarningData */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class HealthCheckReference {
+
+  core.String healthCheck;
+
+  /** Create new HealthCheckReference from JSON data */
+  HealthCheckReference.fromJson(core.Map json) {
+    if (json.containsKey("healthCheck")) {
+      healthCheck = json["healthCheck"];
+    }
+  }
+
+  /** Create JSON Object for HealthCheckReference */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (healthCheck != null) {
+      output["healthCheck"] = healthCheck;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of HealthCheckReference */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class HealthStatus {
+
+  /** Health state of the instance. */
+  core.String healthState;
+
+  /** URL of the instance resource. */
+  core.String instance;
+
+  /** The IP address represented by this resource. */
+  core.String ipAddress;
+
+  /** Create new HealthStatus from JSON data */
+  HealthStatus.fromJson(core.Map json) {
+    if (json.containsKey("healthState")) {
+      healthState = json["healthState"];
+    }
+    if (json.containsKey("instance")) {
+      instance = json["instance"];
+    }
+    if (json.containsKey("ipAddress")) {
+      ipAddress = json["ipAddress"];
+    }
+  }
+
+  /** Create JSON Object for HealthStatus */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (healthState != null) {
+      output["healthState"] = healthState;
+    }
+    if (instance != null) {
+      output["instance"] = instance;
+    }
+    if (ipAddress != null) {
+      output["ipAddress"] = ipAddress;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of HealthStatus */
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1298,12 +1739,80 @@ class HttpHealthCheck {
   }
 
   /** Return String representation of HttpHealthCheck */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** Contains a list of HttpHealthCheck resources. */
+class HttpHealthCheckList {
+
+  /** Unique identifier for the resource; defined by the server (output only). */
+  core.String id;
+
+  /** The HttpHealthCheck resources. */
+  core.List<HttpHealthCheck> items;
+
+  /** Type of resource. */
+  core.String kind;
+
+  /** A token used to continue a truncated list request (output only). */
+  core.String nextPageToken;
+
+  /** Server defined URL for this resource (output only). */
+  core.String selfLink;
+
+  /** Create new HttpHealthCheckList from JSON data */
+  HttpHealthCheckList.fromJson(core.Map json) {
+    if (json.containsKey("id")) {
+      id = json["id"];
+    }
+    if (json.containsKey("items")) {
+      items = json["items"].map((itemsItem) => new HttpHealthCheck.fromJson(itemsItem)).toList();
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("nextPageToken")) {
+      nextPageToken = json["nextPageToken"];
+    }
+    if (json.containsKey("selfLink")) {
+      selfLink = json["selfLink"];
+    }
+  }
+
+  /** Create JSON Object for HttpHealthCheckList */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (id != null) {
+      output["id"] = id;
+    }
+    if (items != null) {
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      output["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      output["selfLink"] = selfLink;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of HttpHealthCheckList */
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
 /** A disk image resource. */
 class Image {
+
+  /** Size of the image tar.gz archive stored in Google Cloud Storage (in bytes). */
+  core.int archiveSizeBytes;
 
   /** Creation timestamp in RFC3339 text format (output only). */
   core.String creationTimestamp;
@@ -1340,6 +1849,9 @@ class Image {
 
   /** Create new Image from JSON data */
   Image.fromJson(core.Map json) {
+    if (json.containsKey("archiveSizeBytes")) {
+      archiveSizeBytes = (json["archiveSizeBytes"] is core.String) ? core.int.parse(json["archiveSizeBytes"]) : json["archiveSizeBytes"];
+    }
     if (json.containsKey("creationTimestamp")) {
       creationTimestamp = json["creationTimestamp"];
     }
@@ -1379,6 +1891,9 @@ class Image {
   core.Map toJson() {
     var output = new core.Map();
 
+    if (archiveSizeBytes != null) {
+      output["archiveSizeBytes"] = archiveSizeBytes;
+    }
     if (creationTimestamp != null) {
       output["creationTimestamp"] = creationTimestamp;
     }
@@ -1417,7 +1932,7 @@ class Image {
   }
 
   /** Return String representation of Image */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1464,7 +1979,7 @@ class ImageRawDisk {
   }
 
   /** Return String representation of ImageRawDisk */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1529,7 +2044,7 @@ class ImageList {
   }
 
   /** Return String representation of ImageList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1711,7 +2226,7 @@ class Instance {
   }
 
   /** Return String representation of Instance */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1775,7 +2290,7 @@ class InstanceAggregatedList {
   }
 
   /** Return String representation of InstanceAggregatedList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1840,7 +2355,34 @@ class InstanceList {
   }
 
   /** Return String representation of InstanceList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class InstanceReference {
+
+  core.String instance;
+
+  /** Create new InstanceReference from JSON data */
+  InstanceReference.fromJson(core.Map json) {
+    if (json.containsKey("instance")) {
+      instance = json["instance"];
+    }
+  }
+
+  /** Create JSON Object for InstanceReference */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (instance != null) {
+      output["instance"] = instance;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of InstanceReference */
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1877,7 +2419,7 @@ class InstancesScopedList {
   }
 
   /** Return String representation of InstancesScopedList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1924,7 +2466,7 @@ class InstancesScopedListWarning {
   }
 
   /** Return String representation of InstancesScopedListWarning */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -1961,7 +2503,7 @@ class InstancesScopedListWarningData {
   }
 
   /** Return String representation of InstancesScopedListWarningData */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2044,7 +2586,7 @@ class Kernel {
   }
 
   /** Return String representation of Kernel */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2109,7 +2651,7 @@ class KernelList {
   }
 
   /** Return String representation of KernelList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2255,7 +2797,7 @@ class MachineType {
   }
 
   /** Return String representation of MachineType */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2283,7 +2825,7 @@ class MachineTypeScratchDisks {
   }
 
   /** Return String representation of MachineTypeScratchDisks */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2347,7 +2889,7 @@ class MachineTypeAggregatedList {
   }
 
   /** Return String representation of MachineTypeAggregatedList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2412,7 +2954,7 @@ class MachineTypeList {
   }
 
   /** Return String representation of MachineTypeList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2449,7 +2991,7 @@ class MachineTypesScopedList {
   }
 
   /** Return String representation of MachineTypesScopedList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2496,7 +3038,7 @@ class MachineTypesScopedListWarning {
   }
 
   /** Return String representation of MachineTypesScopedListWarning */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2533,7 +3075,7 @@ class MachineTypesScopedListWarningData {
   }
 
   /** Return String representation of MachineTypesScopedListWarningData */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2580,7 +3122,7 @@ class Metadata {
   }
 
   /** Return String representation of Metadata */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2617,7 +3159,7 @@ class MetadataItems {
   }
 
   /** Return String representation of MetadataItems */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2709,7 +3251,7 @@ class Network {
   }
 
   /** Return String representation of Network */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2765,7 +3307,7 @@ class NetworkInterface {
   }
 
   /** Return String representation of NetworkInterface */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -2830,7 +3372,7 @@ class NetworkList {
   }
 
   /** Return String representation of NetworkList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3048,7 +3590,7 @@ class Operation {
   }
 
   /** Return String representation of Operation */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3077,7 +3619,7 @@ class OperationError {
   }
 
   /** Return String representation of OperationError */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3123,7 +3665,7 @@ class OperationErrorErrors {
   }
 
   /** Return String representation of OperationErrorErrors */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3169,7 +3711,7 @@ class OperationWarnings {
   }
 
   /** Return String representation of OperationWarnings */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3206,7 +3748,7 @@ class OperationWarningsData {
   }
 
   /** Return String representation of OperationWarningsData */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3270,7 +3812,7 @@ class OperationAggregatedList {
   }
 
   /** Return String representation of OperationAggregatedList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3335,7 +3877,7 @@ class OperationList {
   }
 
   /** Return String representation of OperationList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3372,7 +3914,7 @@ class OperationsScopedList {
   }
 
   /** Return String representation of OperationsScopedList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3419,7 +3961,7 @@ class OperationsScopedListWarning {
   }
 
   /** Return String representation of OperationsScopedListWarning */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3456,7 +3998,7 @@ class OperationsScopedListWarningData {
   }
 
   /** Return String representation of OperationsScopedListWarningData */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3548,7 +4090,7 @@ class Project {
   }
 
   /** Return String representation of Project */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3595,7 +4137,7 @@ class Quota {
   }
 
   /** Return String representation of Quota */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3705,7 +4247,7 @@ class Region {
   }
 
   /** Return String representation of Region */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3770,7 +4312,7 @@ class RegionList {
   }
 
   /** Return String representation of RegionList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3925,7 +4467,7 @@ class Route {
   }
 
   /** Return String representation of Route */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -3971,7 +4513,7 @@ class RouteWarnings {
   }
 
   /** Return String representation of RouteWarnings */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -4008,7 +4550,7 @@ class RouteWarningsData {
   }
 
   /** Return String representation of RouteWarningsData */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -4073,7 +4615,7 @@ class RouteList {
   }
 
   /** Return String representation of RouteList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -4120,7 +4662,7 @@ class SerialPortOutput {
   }
 
   /** Return String representation of SerialPortOutput */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -4158,7 +4700,7 @@ class ServiceAccount {
   }
 
   /** Return String representation of ServiceAccount */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -4268,7 +4810,7 @@ class Snapshot {
   }
 
   /** Return String representation of Snapshot */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -4333,7 +4875,7 @@ class SnapshotList {
   }
 
   /** Return String representation of SnapshotList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -4371,7 +4913,456 @@ class Tags {
   }
 
   /** Return String representation of Tags */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** A TargetPool resource. This resource defines a pool of VMs, associated HttpHealthCheck resources, and the fallback TargetPool. */
+class TargetPool {
+
+  /** This field is applicable only when the containing target pool is serving a forwarding rule as the primary pool, and its 'failoverRatio' field is properly set to a value between [0, 1].
+
+'backupPool' and 'failoverRatio' together define the fallback behavior of the primary target pool: if the ratio of the healthy VMs in the primary pool is at or below 'failoverRatio', traffic arriving at the load-balanced IP will be directed to the backup pool.
+
+In case where 'failoverRatio' and 'backupPool' are not set, or all the VMs in the backup pool are unhealthy, the traffic will be directed back to the primary pool in the "force" mode, where traffic will be spread to the healthy VMs with the best effort, or to all VMs when no VM is healthy. */
+  core.String backupPool;
+
+  /** Creation timestamp in RFC3339 text format (output only). */
+  core.String creationTimestamp;
+
+  /** An optional textual description of the resource; provided by the client when the resource is created. */
+  core.String description;
+
+  /** This field is applicable only when the containing target pool is serving a forwarding rule as the primary pool (i.e., not as a backup pool to some other target pool). The value of the field must be in [0, 1].
+
+If set, 'backupPool' must also be set. They together define the fallback behavior of the primary target pool: if the ratio of the healthy VMs in the primary pool is at or below this number, traffic arriving at the load-balanced IP will be directed to the backup pool.
+
+In case where 'failoverRatio' is not set or all the VMs in the backup pool are unhealthy, the traffic will be directed back to the primary pool in the "force" mode, where traffic will be spread to the healthy VMs with the best effort, or to all VMs when no VM is healthy. */
+  core.num failoverRatio;
+
+  /** A list of URLs to the HttpHealthCheck resource. A member VM in this pool is considered healthy if and only if all specified health checks pass. An empty list means all member VMs will be considered healthy at all times. */
+  core.List<core.String> healthChecks;
+
+  /** Unique identifier for the resource; defined by the server (output only). */
+  core.String id;
+
+  /** A list of resource URLs to the member VMs serving this pool. They must live in zones contained in the same region as this pool. */
+  core.List<core.String> instances;
+
+  /** Type of the resource. */
+  core.String kind;
+
+  /** Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. */
+  core.String name;
+
+  /** URL of the region where the target pool resides (output only). */
+  core.String region;
+
+  /** Server defined URL for the resource (output only). */
+  core.String selfLink;
+
+  /** Sesssion affinity option, must be one of the following values: 'NONE': Connections from the same client IP may go to any VM in the pool; 'CLIENT_IP': Connections from the same client IP will go to the same VM in the pool while that VM remains healthy. 'CLIENT_IP_PROTO': Connections from the same client IP with the same IP protocol will go to the same VM in the pool while that VM remains healthy. */
+  core.String sessionAffinity;
+
+  /** Create new TargetPool from JSON data */
+  TargetPool.fromJson(core.Map json) {
+    if (json.containsKey("backupPool")) {
+      backupPool = json["backupPool"];
+    }
+    if (json.containsKey("creationTimestamp")) {
+      creationTimestamp = json["creationTimestamp"];
+    }
+    if (json.containsKey("description")) {
+      description = json["description"];
+    }
+    if (json.containsKey("failoverRatio")) {
+      failoverRatio = json["failoverRatio"];
+    }
+    if (json.containsKey("healthChecks")) {
+      healthChecks = json["healthChecks"].toList();
+    }
+    if (json.containsKey("id")) {
+      id = json["id"];
+    }
+    if (json.containsKey("instances")) {
+      instances = json["instances"].toList();
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("name")) {
+      name = json["name"];
+    }
+    if (json.containsKey("region")) {
+      region = json["region"];
+    }
+    if (json.containsKey("selfLink")) {
+      selfLink = json["selfLink"];
+    }
+    if (json.containsKey("sessionAffinity")) {
+      sessionAffinity = json["sessionAffinity"];
+    }
+  }
+
+  /** Create JSON Object for TargetPool */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (backupPool != null) {
+      output["backupPool"] = backupPool;
+    }
+    if (creationTimestamp != null) {
+      output["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      output["description"] = description;
+    }
+    if (failoverRatio != null) {
+      output["failoverRatio"] = failoverRatio;
+    }
+    if (healthChecks != null) {
+      output["healthChecks"] = healthChecks.toList();
+    }
+    if (id != null) {
+      output["id"] = id;
+    }
+    if (instances != null) {
+      output["instances"] = instances.toList();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (name != null) {
+      output["name"] = name;
+    }
+    if (region != null) {
+      output["region"] = region;
+    }
+    if (selfLink != null) {
+      output["selfLink"] = selfLink;
+    }
+    if (sessionAffinity != null) {
+      output["sessionAffinity"] = sessionAffinity;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of TargetPool */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class TargetPoolAggregatedList {
+
+  /** Unique identifier for the resource; defined by the server (output only). */
+  core.String id;
+
+  /** A map of scoped target pool lists. */
+  core.Map<core.String, TargetPoolsScopedList> items;
+
+  /** Type of resource. */
+  core.String kind;
+
+  /** A token used to continue a truncated list request (output only). */
+  core.String nextPageToken;
+
+  /** Server defined URL for this resource (output only). */
+  core.String selfLink;
+
+  /** Create new TargetPoolAggregatedList from JSON data */
+  TargetPoolAggregatedList.fromJson(core.Map json) {
+    if (json.containsKey("id")) {
+      id = json["id"];
+    }
+    if (json.containsKey("items")) {
+      items = _mapMap(json["items"], (itemsItem) => new TargetPoolsScopedList.fromJson(itemsItem));
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("nextPageToken")) {
+      nextPageToken = json["nextPageToken"];
+    }
+    if (json.containsKey("selfLink")) {
+      selfLink = json["selfLink"];
+    }
+  }
+
+  /** Create JSON Object for TargetPoolAggregatedList */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (id != null) {
+      output["id"] = id;
+    }
+    if (items != null) {
+      output["items"] = _mapMap(items, (itemsItem) => itemsItem.toJson());
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      output["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      output["selfLink"] = selfLink;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of TargetPoolAggregatedList */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class TargetPoolInstanceHealth {
+
+  core.List<HealthStatus> healthStatus;
+
+  /** Type of resource. */
+  core.String kind;
+
+  /** Create new TargetPoolInstanceHealth from JSON data */
+  TargetPoolInstanceHealth.fromJson(core.Map json) {
+    if (json.containsKey("healthStatus")) {
+      healthStatus = json["healthStatus"].map((healthStatusItem) => new HealthStatus.fromJson(healthStatusItem)).toList();
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+  }
+
+  /** Create JSON Object for TargetPoolInstanceHealth */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (healthStatus != null) {
+      output["healthStatus"] = healthStatus.map((healthStatusItem) => healthStatusItem.toJson()).toList();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of TargetPoolInstanceHealth */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** Contains a list of TargetPool resources. */
+class TargetPoolList {
+
+  /** Unique identifier for the resource; defined by the server (output only). */
+  core.String id;
+
+  /** The TargetPool resources. */
+  core.List<TargetPool> items;
+
+  /** Type of resource. */
+  core.String kind;
+
+  /** A token used to continue a truncated list request (output only). */
+  core.String nextPageToken;
+
+  /** Server defined URL for this resource (output only). */
+  core.String selfLink;
+
+  /** Create new TargetPoolList from JSON data */
+  TargetPoolList.fromJson(core.Map json) {
+    if (json.containsKey("id")) {
+      id = json["id"];
+    }
+    if (json.containsKey("items")) {
+      items = json["items"].map((itemsItem) => new TargetPool.fromJson(itemsItem)).toList();
+    }
+    if (json.containsKey("kind")) {
+      kind = json["kind"];
+    }
+    if (json.containsKey("nextPageToken")) {
+      nextPageToken = json["nextPageToken"];
+    }
+    if (json.containsKey("selfLink")) {
+      selfLink = json["selfLink"];
+    }
+  }
+
+  /** Create JSON Object for TargetPoolList */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (id != null) {
+      output["id"] = id;
+    }
+    if (items != null) {
+      output["items"] = items.map((itemsItem) => itemsItem.toJson()).toList();
+    }
+    if (kind != null) {
+      output["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      output["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      output["selfLink"] = selfLink;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of TargetPoolList */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class TargetPoolsScopedList {
+
+  /** List of target pools contained in this scope. */
+  core.List<TargetPool> targetPools;
+
+  /** Informational warning which replaces the list of addresses when the list is empty. */
+  TargetPoolsScopedListWarning warning;
+
+  /** Create new TargetPoolsScopedList from JSON data */
+  TargetPoolsScopedList.fromJson(core.Map json) {
+    if (json.containsKey("targetPools")) {
+      targetPools = json["targetPools"].map((targetPoolsItem) => new TargetPool.fromJson(targetPoolsItem)).toList();
+    }
+    if (json.containsKey("warning")) {
+      warning = new TargetPoolsScopedListWarning.fromJson(json["warning"]);
+    }
+  }
+
+  /** Create JSON Object for TargetPoolsScopedList */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (targetPools != null) {
+      output["targetPools"] = targetPools.map((targetPoolsItem) => targetPoolsItem.toJson()).toList();
+    }
+    if (warning != null) {
+      output["warning"] = warning.toJson();
+    }
+
+    return output;
+  }
+
+  /** Return String representation of TargetPoolsScopedList */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+/** Informational warning which replaces the list of addresses when the list is empty. */
+class TargetPoolsScopedListWarning {
+
+  /** The warning type identifier for this warning. */
+  core.String code;
+
+  /** Metadata for this warning in 'key: value' format. */
+  core.List<TargetPoolsScopedListWarningData> data;
+
+  /** Optional human-readable details for this warning. */
+  core.String message;
+
+  /** Create new TargetPoolsScopedListWarning from JSON data */
+  TargetPoolsScopedListWarning.fromJson(core.Map json) {
+    if (json.containsKey("code")) {
+      code = json["code"];
+    }
+    if (json.containsKey("data")) {
+      data = json["data"].map((dataItem) => new TargetPoolsScopedListWarningData.fromJson(dataItem)).toList();
+    }
+    if (json.containsKey("message")) {
+      message = json["message"];
+    }
+  }
+
+  /** Create JSON Object for TargetPoolsScopedListWarning */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (code != null) {
+      output["code"] = code;
+    }
+    if (data != null) {
+      output["data"] = data.map((dataItem) => dataItem.toJson()).toList();
+    }
+    if (message != null) {
+      output["message"] = message;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of TargetPoolsScopedListWarning */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class TargetPoolsScopedListWarningData {
+
+  /** A key for the warning data. */
+  core.String key;
+
+  /** A warning data value corresponding to the key. */
+  core.String value;
+
+  /** Create new TargetPoolsScopedListWarningData from JSON data */
+  TargetPoolsScopedListWarningData.fromJson(core.Map json) {
+    if (json.containsKey("key")) {
+      key = json["key"];
+    }
+    if (json.containsKey("value")) {
+      value = json["value"];
+    }
+  }
+
+  /** Create JSON Object for TargetPoolsScopedListWarningData */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (key != null) {
+      output["key"] = key;
+    }
+    if (value != null) {
+      output["value"] = value;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of TargetPoolsScopedListWarningData */
+  core.String toString() => JSON.encode(this.toJson());
+
+}
+
+class TargetReference {
+
+  core.String target;
+
+  /** Create new TargetReference from JSON data */
+  TargetReference.fromJson(core.Map json) {
+    if (json.containsKey("target")) {
+      target = json["target"];
+    }
+  }
+
+  /** Create JSON Object for TargetReference */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (target != null) {
+      output["target"] = target;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of TargetReference */
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -4490,7 +5481,7 @@ class Zone {
   }
 
   /** Return String representation of Zone */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -4545,7 +5536,7 @@ class ZoneMaintenanceWindows {
   }
 
   /** Return String representation of ZoneMaintenanceWindows */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -4610,7 +5601,7 @@ class ZoneList {
   }
 
   /** Return String representation of ZoneList */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
